@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Street Light | Control Center</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+
+<!-- LOGIN PAGE -->
+<main id="loginPage" class="login-page">
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <section class="login-card">
+        <div class="login-showcase">
+            <div class="brand">
+                <div class="brand-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <span>SMART<span class="brand-accent">LUX</span></span>
+            </div>
+
+            <div class="showcase-copy">
+                <span class="eyebrow"><span class="live-dot"></span> INTELLIGENT CITY TECHNOLOGY</span>
+                <h1>Brighter streets.<br><span>Smarter cities.</span></h1>
+                <p>Monitor street lights, track sensor readings and manage faults — all from one intelligent control center.</p>
+            </div>
+
+            <div class="city-illustration" aria-hidden="true">
+                <div class="moon"></div>
+                <div class="city-building building-one"></div>
+                <div class="city-building building-two"></div>
+                <div class="city-building building-three"></div>
+                <div class="road"></div>
+                <div class="lamp lamp-one"><span></span><i></i></div>
+                <div class="lamp lamp-two"><span></span><i></i></div>
+                <div class="lamp lamp-three"><span></span><i></i></div>
+                <div class="light-beam beam-one"></div>
+                <div class="light-beam beam-two"></div>
+                <div class="light-beam beam-three"></div>
+                <div class="illustration-label">
+                    <i class="fa-solid fa-signal"></i> SMART CITY NETWORK
+                    <span>ONLINE</span>
+                </div>
+            </div>
+
+            <div class="showcase-footer">
+                <span><i class="fa-solid fa-shield-halved"></i> Smart monitoring</span>
+                <span><i class="fa-solid fa-bolt"></i> Real-time insights</span>
+            </div>
+        </div>
+
+        <div class="login-panel">
+            <div class="mobile-brand">
+                <div class="brand-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <span>SMART<span class="brand-accent">LUX</span></span>
+            </div>
+
+            <div class="login-content">
+                <div class="welcome-icon"><i class="fa-solid fa-lock"></i></div>
+                <span class="form-eyebrow">CONTROL CENTER ACCESS</span>
+                <h2>Welcome back</h2>
+                <p class="login-subtitle">Sign in to manage your smart street light network.</p>
+
+                <form id="loginForm">
+                    <label for="username">Username</label>
+                    <div class="input-wrap">
+                        <i class="fa-regular fa-user input-icon"></i>
+                        <input id="username" name="username" type="text"
+                               placeholder="Enter your username"
+                               autocomplete="username" required>
+                    </div>
+
+                    <label for="password">Password</label>
+                    <div class="input-wrap">
+                        <i class="fa-solid fa-lock input-icon"></i>
+                        <input id="password" name="password" type="password"
+                               placeholder="Enter your password"
+                               autocomplete="current-password" required>
+                        <button id="togglePassword" type="button"
+                                class="password-toggle" aria-label="Show password">
+                            <i class="fa-regular fa-eye"></i>
+                        </button>
+                    </div>
+
+                    <div id="loginMessage" class="login-message" role="alert"></div>
+
+                    <button type="submit" class="login-button">
+                        <span>Enter control center</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="secure-note">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <span>Your smart city workspace is protected</span>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <span>SMARTLUX CONTROL CENTER</span>
+                <span>© 2026</span>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- DASHBOARD -->
+<div id="dashboardPage" class="dashboard-page hidden">
+
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon"><i class="fa-solid fa-lightbulb"></i></div>
+            <div>
+                <strong>SMART<span class="brand-accent">LUX</span></strong>
+                <small>CONTROL CENTER</small>
+            </div>
+        </div>
+
+        <div class="sidebar-label">WORKSPACE</div>
+
+        <nav class="sidebar-nav">
+            <button class="nav-item active" data-section="dashboardSection">
+                <i class="fa-solid fa-chart-pie"></i> Dashboard
+            </button>
+            <button class="nav-item" data-section="faultsSection">
+                <i class="fa-solid fa-triangle-exclamation"></i> Fault reports
+            </button>
+            <button class="nav-item" data-section="lightsSection">
+                <i class="fa-solid fa-lightbulb"></i> Street lights
+            </button>
+            <button class="nav-item" data-section="sensorsSection">
+                <i class="fa-solid fa-wave-square"></i> Sensor data
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="sidebar-status">
+                <span class="status-dot"></span>
+                <span>Monitoring system</span>
+            </div>
+            <button id="logoutButton" class="logout-button">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> Log out
+            </button>
+        </div>
+    </aside>
+
+    <main class="dashboard-main">
+        <header class="topbar">
+            <button id="mobileMenu" class="icon-button mobile-menu" aria-label="Open menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div>
+                <h1 id="pageTitle">Street Light Dashboard</h1>
+                <p>Monitor your network and manage street light faults.</p>
+            </div>
+
+            <div class="topbar-actions">
+                <span id="clock" class="clock"></span>
+
+                <button id="notificationButton" class="notification-button"
+                        type="button" title="View unresolved faults"
+                        aria-label="View unresolved faults">
+                    <i class="fa-regular fa-bell"></i>
+                    <span id="notificationCount" class="notification-count hidden">0</span>
+                </button>
+
+                <button id="refreshButton" class="icon-button"
+                        title="Refresh data" aria-label="Refresh data">
+                    <i class="fa-solid fa-rotate"></i>
+                </button>
+
+                <div class="user-avatar" id="userAvatar">U</div>
+            </div>
+        </header>
+
+        <div class="connection-banner">
+            <span class="connection-status">
+                <span class="status-dot"></span>
+                <span id="connectionText">Checking connection...</span>
+            </span>
+            <span id="lastUpdated">Waiting for data</span>
+        </div>
+
+        <!-- DASHBOARD -->
+        <section id="dashboardSection" class="content-section active-section">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">OVERVIEW</span>
+                    <h2>Network overview</h2>
+                </div>
+                <button class="primary-button" id="showFaultForm">
+                    <i class="fa-solid fa-plus"></i> Report a fault
+                </button>
+            </div>
+
+            <div class="stats-grid">
+                <article class="stat-card">
+                    <div class="stat-top"><span>Total street lights</span><i class="fa-solid fa-lightbulb"></i></div>
+                    <strong id="totalLights">0</strong>
+                    <small>Registered in database</small>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-top"><span>Unresolved faults</span><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <strong id="totalFaults">0</strong>
+                    <small>Needs attention</small>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-top"><span>Resolved faults</span><i class="fa-solid fa-circle-check"></i></div>
+                    <strong id="resolvedFaults">0</strong>
+                    <small>Marked resolved</small>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-top"><span>Sensor readings</span><i class="fa-solid fa-wave-square"></i></div>
+                    <strong id="totalReadings">0</strong>
+                    <small>Latest 100 readings</small>
+                </article>
+            </div>
+
+            <div class="sensor-highlights">
+                <article><span>Latest voltage</span><strong><span id="latestVoltage">--</span> <small>V</small></strong></article>
+                <article><span>Latest current</span><strong><span id="latestCurrent">--</span> <small>A</small></strong></article>
+                <article><span>Latest brightness</span><strong><span id="latestBrightness">--</span> <small>lux</small></strong></article>
+            </div>
+
+            <div class="section-heading">
+                <div><span class="eyebrow">LIVE NETWORK</span><h2>Street light status</h2></div>
+            </div>
+
+            <div id="streetLightGrid" class="light-grid">
+                <p class="empty-state">Loading street lights...</p>
+            </div>
+
+            <div class="section-heading table-heading">
+                <div><span class="eyebrow">LATEST ACTIVITY</span><h2>Recent fault reports</h2></div>
+                <button class="text-button" data-go="faultsSection">
+                    View all <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="table-card">
+                <div class="table-scroll">
+                    <table>
+                        <thead><tr><th>Fault ID</th><th>Light ID</th><th>Area</th><th>Fault type</th><th>Reported</th><th>Status</th></tr></thead>
+                        <tbody id="recentFaultTable"><tr><td colspan="6">Loading reports...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAULT REPORTS -->
+        <section id="faultsSection" class="content-section">
+            <div class="section-heading">
+                <div><span class="eyebrow">MAINTENANCE</span><h2>Fault reports</h2><p>Track and resolve reported street light issues.</p></div>
+                <button class="primary-button" data-go="faultsSection" id="showFaultFormAlt">
+                    <i class="fa-solid fa-plus"></i> Report a fault
+                </button>
+            </div>
+
+            <form id="faultForm" class="form-card hidden">
+                <div class="form-card-heading">
+                    <h3>New fault report</h3>
+                    <p>Enter the fault details and save them to the database.</p>
+                </div>
+
+                <div class="form-grid">
+                    <div><label for="faultLightId">Light ID *</label><input id="faultLightId" required placeholder="e.g. SL001"></div>
+                    <div><label for="faultArea">Area</label><input id="faultArea" placeholder="Street or area name"></div>
+
+                    <div>
+                        <label for="faultType">Fault type *</label>
+                        <select id="faultType" required>
+                            <option value="">Select fault type</option>
+                            <option>Light not working</option>
+                            <option>Flickering light</option>
+                            <option>Low brightness</option>
+                            <option>Sensor failure</option>
+                            <option>Power failure</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="faultPriority">Priority</label>
+                        <select id="faultPriority">
+                            <option>Low</option><option selected>Medium</option>
+                            <option>High</option><option>Critical</option>
+                        </select>
+                    </div>
+
+                    <div><label for="faultTechnician">Technician</label><input id="faultTechnician" placeholder="Technician name"></div>
+
+                    <div class="full-width">
+                        <label for="faultDescription">Description</label>
+                        <textarea id="faultDescription" rows="3" placeholder="Describe the issue..."></textarea>
+                    </div>
+
+                    <div class="full-width">
+                        <label for="faultPhoto">Upload fault photo (optional)</label>
+                        <input id="faultPhoto" type="file" accept="image/jpeg,image/png,image/webp">
+                        <small>JPG, PNG or WEBP. Maximum file size: 5 MB.</small>
+                        <img id="faultPhotoPreview" class="photo-preview hidden" alt="Fault photo preview">
+                    </div>
+                </div>
+
+                <div id="faultMessage" class="form-message" role="alert"></div>
+
+                <div class="form-actions">
+                    <button type="button" id="cancelFaultForm" class="secondary-button">Cancel</button>
+                    <button type="submit" class="primary-button">Save Fault Report</button>
+                </div>
+            </form>
+
+            <div class="filter-row">
+                <label for="faultFilter">Filter reports</label>
+                <select id="faultFilter">
+                    <option value="all">All reports</option>
+                    <option value="unresolved">Unresolved</option>
+                    <option value="resolved">Resolved</option>
+                </select>
+            </div>
+
+            <div class="table-card">
+                <div class="table-scroll">
+                    <table>
+                        <thead><tr><th>Fault ID</th><th>Light ID</th><th>Area</th><th>Fault type</th><th>Priority</th><th>Reported</th><th>Status</th><th>Photo</th><th>Action</th></tr></thead>
+                        <tbody id="faultTable"><tr><td colspan="9">Loading reports...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- STREET LIGHTS -->
+        <section id="lightsSection" class="content-section">
+            <div class="section-heading">
+                <div><span class="eyebrow">INFRASTRUCTURE</span><h2>Registered street lights</h2><p>Light locations stored in your MySQL database.</p></div>
+            </div>
+            <div class="table-card"><div class="table-scroll">
+                <table>
+                    <thead><tr><th>Light ID</th><th>Area</th><th>Latitude</th><th>Longitude</th><th>Fault status</th></tr></thead>
+                    <tbody id="lightTable"><tr><td colspan="5">Loading lights...</td></tr></tbody>
+                </table>
+            </div></div>
+        </section>
+
+        <!-- SENSOR DATA -->
+        <section id="sensorsSection" class="content-section">
+            <div class="section-heading">
+                <div><span class="eyebrow">HARDWARE TELEMETRY</span><h2>Sensor readings</h2><p>Readings received and saved by the backend.</p></div>
+            </div>
+            <div class="filter-row">
+                <label for="sensorFilter">Street light</label>
+                <select id="sensorFilter"><option value="all">All street lights</option></select>
+            </div>
+            <div class="table-card"><div class="table-scroll">
+                <table>
+                    <thead><tr><th>Light ID</th><th>Timestamp</th><th>Voltage (V)</th><th>Current (A)</th><th>Brightness (lux)</th><th>Light status</th></tr></thead>
+                    <tbody id="sensorTable"><tr><td colspan="6">Loading sensor readings...</td></tr></tbody>
+                </table>
+            </div></div>
+        </section>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
